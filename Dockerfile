@@ -14,11 +14,13 @@ ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
+# Install node
 RUN sudo apt-get update
 RUN sudo apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
 
+# Install mongo
 RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
 RUN sudo apt-get update
@@ -26,4 +28,8 @@ RUN sudo apt-get install -y mongodb-org
 RUN sudo apt-get install -y mongodb-org=3.0.2 mongodb-org-server=3.0.2 mongodb-org-shell=3.0.2 mongodb-org-mongos=3.0.2 mongodb-org-tools=3.0.2
 RUN sudo service mongod start
 
+# Install forever
 RUN sudo npm install -g forever
+
+# Allow runner user to use sudo
+RUN sudo usermod -a -G sudo gitlab_ci_runner
