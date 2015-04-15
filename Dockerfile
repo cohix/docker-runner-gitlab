@@ -27,4 +27,4 @@ RUN sudo apt-get install -y mongodb-org=3.0.2 mongodb-org-server=3.0.2 mongodb-o
 RUN sudo service mongod start
 
 RUN sudo apt-get install -y libcap2-bin
-RUN sudo setcap cap_net_bind_service=+ep /usr/local/bin/node
+RUN sudo setcap cap_net_bind_service=+ep /usr/bin/node
