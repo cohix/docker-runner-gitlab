@@ -15,7 +15,7 @@ RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
 RUN sudo apt-get update
-RUN sudo apt-get install curl
+RUN sudo apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
 
@@ -25,3 +25,6 @@ RUN sudo apt-get update
 RUN sudo apt-get install -y mongodb-org
 RUN sudo apt-get install -y mongodb-org=3.0.2 mongodb-org-server=3.0.2 mongodb-org-shell=3.0.2 mongodb-org-mongos=3.0.2 mongodb-org-tools=3.0.2
 RUN sudo service mongod start
+
+RUN sudo apt-get install libcap2-bin
+RUN sudo setcap cap_net_bind_service=+ep /usr/local/bin/node
