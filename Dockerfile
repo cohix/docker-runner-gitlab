@@ -14,6 +14,8 @@ ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
+RUN sudo apt-get update
+RUN sudo apt-get install curl
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
 
