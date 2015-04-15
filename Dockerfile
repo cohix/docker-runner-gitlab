@@ -33,3 +33,4 @@ RUN sudo npm install -g forever
 
 # Allow runner user to use sudo
 RUN sudo usermod -a -G sudo gitlab_ci_runner
+RUN sudo echo "%sudo  ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/spottedu
