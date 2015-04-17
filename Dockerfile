@@ -15,6 +15,7 @@ RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
 # Disable strict checking
+RUN sudo mkdir /home/gitlab_ci_runner/.ssh/
 RUN sudo echo "Host *\n\tStrictHostKeyChecking no" >> /home/gitlab_ci_runner/.ssh/config
 
 # Install node
