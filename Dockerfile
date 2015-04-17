@@ -14,6 +14,10 @@ ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
+# Copy generated ssh keys to proper location
+RUN sudo cp /home/gitlab_ci_runner/data/.ssh/id_rsa /root/.ssh/id_rsa
+RUN sudo cp /home/gitlab_ci_runner/data/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub
+
 # Install node
 RUN sudo apt-get update
 RUN sudo apt-get install -y curl
