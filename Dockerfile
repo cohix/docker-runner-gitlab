@@ -14,6 +14,8 @@ ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
 
+# Disable strict checking
+RUN sudo echo "Host *\n\tStrictHostKeyChecking no" >> /home/gitlab_ci_runner/.ssh/config
 
 # Install node
 RUN sudo apt-get update
@@ -35,7 +37,3 @@ RUN sudo npm install -g forever
 # Allow runner user to use sudo
 RUN sudo usermod -a -G sudo gitlab_ci_runner
 RUN sudo echo "%sudo  ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/spottedu
-
-# Copy generated ssh keys to proper location
-# RUN sudo cp /home/gitlab_ci_runner/data/.ssh/id_rsa /root/.ssh/id_rsa
-# RUN sudo cp /home/gitlab_ci_runner/data/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub
