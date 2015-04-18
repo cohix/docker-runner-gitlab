@@ -1,5 +1,5 @@
 FROM spottedu/docker-runner-base:latest
-MAINTAINER sameer@damagehead.com
+MAINTAINER connor@spottedu.co
 
 RUN apt-get update && \
     apt-get install -y build-essential cmake openssh-server \
@@ -13,6 +13,10 @@ RUN apt-get update && \
 ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
+
+# Set ENV's
+ENV CI_SERVER_URL=http://ci.spottedu.co/
+ENV REGISTRATION_TOKEN=3532bfdf680e7df3bade
 
 # Install node
 RUN sudo apt-get update
