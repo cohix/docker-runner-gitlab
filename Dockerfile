@@ -16,7 +16,7 @@ RUN /app/setup/install
 
 # Set ENV's
 ENV CI_SERVER_URL=http://ci.spottedu.co/
-ENV REGISTRATION_TOKEN=4fb1d38eabcd39203214
+ENV REGISTRATION_TOKEN=d45d9bd639d09ca4779b335edbc478
 
 # Install node
 RUN sudo apt-get update
